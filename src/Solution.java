@@ -1,5 +1,5 @@
 public class Solution {
-    public String solution(int[] numbers, String hand) {
+    public String solution(String hand) {
         String answer = "";
         return answer;
     }
