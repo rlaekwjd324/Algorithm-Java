@@ -1,6 +1,9 @@
-public class Solution {
-    public String solution(String hand) {
-        String answer = "";
-        return answer;
+class Solution {
+    public int solution(String s) {
+        String[] numberStringArray = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+        for (int i = 0; i < numberStringArray.length; i++) {
+            s = s.replace(numberStringArray[i], String.valueOf(i));
+        }
+        return Integer.parseInt(s);
     }
 }
