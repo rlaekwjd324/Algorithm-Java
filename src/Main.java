@@ -35,8 +35,8 @@ public class Main {
         if (upNumber > 0) {
             System.out.print(upNumber);
         }
-        for (int i = 0; i < sumArray.length; i++) {
-            System.out.print(sumArray[i]);
+        for (int j : sumArray) {
+            System.out.print(j);
         }
     }
 }
