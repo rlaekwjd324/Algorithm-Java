@@ -29,11 +29,11 @@ public class Main {
                 hashSet.add(nodeEdges[i][j]);
             }
         }
-        Iterator<Integer> it = hashSet.iterator(); // Iterator(반복자) 생성
-        while (it.hasNext()) { // hasNext() : 데이터가 있으면 true 없으면 false
+        // Iterator(반복자) 생성
+        for (Integer integer : hashSet) { // hasNext() : 데이터가 있으면 true 없으면 false
             checkNodes = new boolean[N][N];
             tempCount = 0;
-            rainyLand = it.next();
+            rainyLand = integer;
             for (int j = 0; j < N; j++) {
                 for (int k = 0; k < N; k++) {
                     if (!checkNodes[j][k] && nodeEdges[j][k] > rainyLand) {
