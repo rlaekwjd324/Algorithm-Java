@@ -7,8 +7,8 @@ public class Main {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder stringBuilder = new StringBuilder();
         char[] strings = bufferedReader.readLine().toCharArray();
-        for (int i = 0; i < strings.length; i++) {
-            char string = strings[i];
+        for (char c : strings) {
+            char string = c;
             if (string >= 65 && string <= 90) {
                 string += 13;
                 if (string > 90) {
