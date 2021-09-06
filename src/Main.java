@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -9,7 +11,17 @@ public class Main {
     static int[] moveX = {1, 0};
     static int[] moveY = {0, 1};
     static boolean[][] checkArray;
-    static StringBuilder string = new StringBuilder();
+    static Queue<Pair> queue = new LinkedList<>();
+
+    private static class Pair {
+        int x, y, dis;
+
+        Pair(int x, int y, int dis) {
+            this.x = x;
+            this.y = y;
+            this.dis = dis;
+        }
+    }
 
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
@@ -22,39 +34,34 @@ public class Main {
                 array[i][j] = Integer.parseInt(stringTokenizer.nextToken());
             }
         }
-        string.append("Hing");
         checkArray[0][0] = true;
-        dfs(0, 0, array[0][0]);
-        System.out.print(string);
+        queue.add(new Pair(0, 0, array[0][0]));
+        bfs();
     }
 
-    private static void dfs(int x, int y, int dis) {
-        if (x == N - 1 && y == N - 1 && dis == 0) {
-            string = new StringBuilder();
-            string.append("HaruHaru");
-            return;
-        }
-        if (x >= N || y >= N) {
-            return;
-        }
-        for (int i = 0; i < 2; i++) {
-            int newX = x + moveX[i];
-            int newY = y + moveY[i];
-            if (newX >= 0 && newY >= 0 && newX < N && newY < N) {
-                if (!checkArray[newX][newY]) {
-                    if (dis > 0) {
-                        checkArray[newX][newY] = true;
-                        dfs(newX, newY, dis - 1);
-                        checkArray[newX][newY] = false;
-                    } else {
-                        if (array[newX][newY] < N - x || array[newX][newY] < N - y) {
-                            checkArray[newX][newY] = true;
-                            dfs(newX, newY, array[newX][newY]);
-                            checkArray[newX][newY] = false;
-                        }
-                    }
+    private static void bfs() {
+        while (!queue.isEmpty()) {
+            Pair pair = queue.poll();
+            int x = pair.x + pair.dis;
+            int y = pair.y + pair.dis;
+
+            if (x >= 0 && x < N && !checkArray[x][pair.y]) {
+                if (array[x][pair.y] == -1) {
+                    System.out.print("HaruHaru");
+                    return;
                 }
+                checkArray[x][pair.y] = true;
+                queue.add(new Pair(x, pair.y, array[x][pair.y]));
+            }
+            if (y >= 0 && y < N && !checkArray[pair.x][y]) {
+                if (array[pair.x][y] == -1) {
+                    System.out.print("HaruHaru");
+                    return;
+                }
+                checkArray[pair.x][y] = true;
+                queue.add(new Pair(pair.x, y, array[pair.x][y]));
             }
         }
+        System.out.print("Hing");
     }
 }
