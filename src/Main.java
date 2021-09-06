@@ -1,27 +1,13 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main {
     static int N;
     static int[][] array;
-    static int[] moveX = {1, 0};
-    static int[] moveY = {0, 1};
     static boolean[][] checkArray;
-    static Queue<Pair> queue = new LinkedList<>();
-
-    private static class Pair {
-        int x, y, dis;
-
-        Pair(int x, int y, int dis) {
-            this.x = x;
-            this.y = y;
-            this.dis = dis;
-        }
-    }
+    static StringBuilder string = new StringBuilder();
 
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
@@ -34,34 +20,32 @@ public class Main {
                 array[i][j] = Integer.parseInt(stringTokenizer.nextToken());
             }
         }
+        string.append("Hing");
         checkArray[0][0] = true;
-        queue.add(new Pair(0, 0, array[0][0]));
-        bfs();
+        dfs(0, 0, array[0][0]);
+        System.out.print(string);
     }
 
-    private static void bfs() {
-        while (!queue.isEmpty()) {
-            Pair pair = queue.poll();
-            int x = pair.x + pair.dis;
-            int y = pair.y + pair.dis;
-
-            if (x >= 0 && x < N && !checkArray[x][pair.y]) {
-                if (array[x][pair.y] == -1) {
-                    System.out.print("HaruHaru");
-                    return;
-                }
-                checkArray[x][pair.y] = true;
-                queue.add(new Pair(x, pair.y, array[x][pair.y]));
+    private static void dfs(int x, int y, int dis) {
+        int newX = x+dis;
+        int newY = y+dis;
+        if (newX >= 0 && newX < N && !checkArray[newX][y]) {
+            if(array[newX][y]==-1){
+                string = new StringBuilder();
+                string.append("HaruHaru");
+                return;
             }
-            if (y >= 0 && y < N && !checkArray[pair.x][y]) {
-                if (array[pair.x][y] == -1) {
-                    System.out.print("HaruHaru");
-                    return;
-                }
-                checkArray[pair.x][y] = true;
-                queue.add(new Pair(pair.x, y, array[pair.x][y]));
-            }
+            checkArray[newX][y] = true;
+            dfs(newX, y, array[newX][y]);
         }
-        System.out.print("Hing");
+        if (newY >= 0 && newY < N && !checkArray[x][newY]) {
+            if(array[x][newY]==-1){
+                string = new StringBuilder();
+                string.append("HaruHaru");
+                return;
+            }
+            checkArray[x][newY] = true;
+            dfs(x, newY, array[x][newY]);
+        }
     }
 }
