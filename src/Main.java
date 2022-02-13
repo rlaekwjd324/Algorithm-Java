@@ -1,26 +1,25 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-        int firstNumber = Integer.parseInt(stringTokenizer.nextToken());
-        int secondNumber = Integer.parseInt(stringTokenizer.nextToken());
-        StringBuilder stringBuilder = new StringBuilder();
-        while (firstNumber != 0 || secondNumber != 0) {
-            if (firstNumber > secondNumber) {
-                stringBuilder.append("Yes");
-            } else {
-                stringBuilder.append("No");
-            }
-            stringBuilder.append("\n");
-            stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-            firstNumber = Integer.parseInt(stringTokenizer.nextToken());
-            secondNumber = Integer.parseInt(stringTokenizer.nextToken());
+        int a = Integer.parseInt(bufferedReader.readLine());
+        int b = Integer.parseInt(bufferedReader.readLine());
+        int c = Integer.parseInt(bufferedReader.readLine());
+        if (a == 60 && b == 60 && c == 60) {
+            System.out.println("Equilateral");
+            return;
         }
-        System.out.print(stringBuilder);
+        if (a + b + c == 180) {
+            if (a != b && b != c && c != a) {
+                System.out.println("Scalene");
+                return;
+            }
+            System.out.println("Isosceles");
+            return;
+        }
+        System.out.println("Error");
     }
 }
