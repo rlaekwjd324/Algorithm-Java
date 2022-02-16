@@ -6,16 +6,16 @@ import java.util.StringTokenizer;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder stringBuilder = new StringBuilder();
-        String inputString = bufferedReader.readLine();
-        while (!inputString.equals("END")) {
-            String tempString = "";
-            for (int i = 0; i < inputString.length(); i++) {
-                tempString = inputString.charAt(i) + tempString;
-            }
-            stringBuilder.append(tempString).append("\n");
-            inputString = bufferedReader.readLine();
+        StringTokenizer stringTokenizer;
+        int max = 0;
+        int peopleCount = 0;
+        for (int i = 0; i < 10; i++) {
+            stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+            int outputPeople = Integer.parseInt(stringTokenizer.nextToken());
+            int inputPeople = Integer.parseInt(stringTokenizer.nextToken());
+            peopleCount = peopleCount + inputPeople - outputPeople;
+            max = Math.max(max, peopleCount);
         }
-        System.out.print(stringBuilder);
+        System.out.println(max);
     }
 }
