@@ -6,29 +6,32 @@ import java.util.StringTokenizer;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        int N = Integer.parseInt(bufferedReader.readLine());
-        int max = 0;
-        for (int i = 0; i < N; i++) {
-            StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-            int first = Integer.parseInt(stringTokenizer.nextToken());
-            int second = Integer.parseInt(stringTokenizer.nextToken());
-            int third = Integer.parseInt(stringTokenizer.nextToken());
-            int score = 0;
-            if (first == second && second == third) {
-                score = 10000 + first * 1000;
-            } else if (first == second || second == third || third == first) {
-                if (first == second) {
-                    score = 1000 + first * 100;
-                } else {
-                    score = 1000 + third * 100;
-                }
-            } else {
-                int tempMax = Math.max(first, second);
-                tempMax = Math.max(tempMax, third);
-                score = 100 * tempMax;
-            }
-            max = Math.max(max, score);
+        int A[] = new int[10];
+        int B[] = new int[10];
+        StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+        for (int j = 0; j < 10; j++) {
+            A[j] = Integer.parseInt(stringTokenizer.nextToken());
         }
-        System.out.print(max);
+        stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+        for (int j = 0; j < 10; j++) {
+            B[j] = Integer.parseInt(stringTokenizer.nextToken());
+        }
+        int count = 0;
+        for (int i = 0; i < 10; i++) {
+            if (A[i] > B[i]) {
+                count++;
+            } else if (A[i] < B[i]) {
+                count--;
+            }
+        }
+        if (count > 0) {
+            System.out.println("A");
+            return;
+        }
+        if (count < 0) {
+            System.out.println("B");
+            return;
+        }
+        System.out.println("D");
     }
 }
