@@ -6,32 +6,19 @@ import java.util.StringTokenizer;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        int A[] = new int[10];
-        int B[] = new int[10];
-        StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-        for (int j = 0; j < 10; j++) {
-            A[j] = Integer.parseInt(stringTokenizer.nextToken());
-        }
-        stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-        for (int j = 0; j < 10; j++) {
-            B[j] = Integer.parseInt(stringTokenizer.nextToken());
-        }
-        int count = 0;
-        for (int i = 0; i < 10; i++) {
-            if (A[i] > B[i]) {
-                count++;
-            } else if (A[i] < B[i]) {
-                count--;
+        int x = 0, y = 0, max = 0;
+        for (int i = 0; i < 9; i++) {
+            StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+            for (int j = 0; j < 9; j++) {
+                int a = Integer.parseInt(stringTokenizer.nextToken());
+                if (max < a) {
+                    max = a;
+                    x = i;
+                    y = j;
+                }
             }
         }
-        if (count > 0) {
-            System.out.println("A");
-            return;
-        }
-        if (count < 0) {
-            System.out.println("B");
-            return;
-        }
-        System.out.println("D");
+        System.out.println(max);
+        System.out.println((x + 1) + " " + (y + 1));
     }
 }
