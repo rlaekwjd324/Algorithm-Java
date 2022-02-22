@@ -8,21 +8,13 @@ public class Main {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         int T = Integer.parseInt(bufferedReader.readLine());
         for (int i = 0; i < T; i++) {
-            int y = 0, k = 0;
-            for (int j = 0; j < 9; j++) {
-                StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-                y += Integer.parseInt(stringTokenizer.nextToken());
-                k += Integer.parseInt(stringTokenizer.nextToken());
+            int N = Integer.parseInt(bufferedReader.readLine());
+            StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+            int sum = 0;
+            for (int j = 0; j < N; j++) {
+                sum += Integer.parseInt(stringTokenizer.nextToken());
             }
-            if (y > k) {
-                System.out.println("Yonsei");
-                continue;
-            }
-            if (y < k) {
-                System.out.println("Korea");
-                continue;
-            }
-            System.out.println("Draw");
+            System.out.println(sum);
         }
     }
 }
