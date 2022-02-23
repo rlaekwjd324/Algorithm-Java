@@ -11,7 +11,7 @@ public class Main {
             if (d < 18) {
                 System.out.println("Before");
                 return;
-            }
+            } 
             if (d == 18) {
                 System.out.println("Special");
                 return;
