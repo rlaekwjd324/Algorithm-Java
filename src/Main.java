@@ -1,26 +1,26 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        int m = Integer.parseInt(bufferedReader.readLine());
-        int d = Integer.parseInt(bufferedReader.readLine());
-        if (m == 2) {
-            if (d < 18) {
-                System.out.println("Before");
-                return;
+        int count = Integer.parseInt(bufferedReader.readLine());
+        StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+        ArrayList<Integer> students = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            int a = Integer.parseInt(stringTokenizer.nextToken());
+            int position = 0;
+            if (students.size() > a) {
+                position = students.size() - a;
             }
-            if (d == 18) {
-                System.out.println("Special");
-                return;
-            }
+            students.add(position, i + 1);
         }
-        if (m < 2) {
-            System.out.println("Before");
-            return;
+        for (int i = 0; i < count; i++) {
+            System.out.print(students.get(i) + " ");
         }
-        System.out.println("After");
     }
+
 }
