@@ -1,28 +1,29 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder stringBuilder = new StringBuilder();
-        String inputNumber = bufferedReader.readLine();
-        while (!inputNumber.equals("0")) {
-            int sum = 1;
-            for (int i = 0; i < inputNumber.length(); i++) {
-                char chr = inputNumber.charAt(i);
-                if (chr == '1') {
-                    sum += 2;
-                } else if (chr == '0') {
-                    sum += 4;
-                } else {
-                    sum += 3;
-                }
-                sum++;
-            }
-            stringBuilder.append(sum).append("\n");
-            inputNumber = bufferedReader.readLine();
+        StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+        int a = Integer.parseInt(stringTokenizer.nextToken());
+        int b = Integer.parseInt(stringTokenizer.nextToken());
+        int c = Integer.parseInt(stringTokenizer.nextToken());
+        if (a == b && b == c) {
+            System.out.println(10000 + a * 1000);
+            return;
         }
-        System.out.print(stringBuilder);
+        if (a == b || a == c) {
+            System.out.println(1000 + 100 * a);
+            return;
+        }
+        if (b == c) {
+            System.out.println(1000 + 100 * b);
+            return;
+        }
+        int max = Math.max(a, b);
+        max = Math.max(max, c);
+        System.out.println(max * 100);
     }
 }
