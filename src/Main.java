@@ -8,23 +8,16 @@ public class Main {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
         int N = Integer.parseInt(stringTokenizer.nextToken());
-        int Q = Integer.parseInt(stringTokenizer.nextToken());
-        StringBuilder stringBuilder = new StringBuilder();
-        int[] nArray = new int[N];
+        String L = stringTokenizer.nextToken();
+        int count = 0;
         for (int i = 0; i < N; i++) {
-            nArray[i] = Integer.parseInt(bufferedReader.readLine());
-        }
-        for (int i = 0; i < Q; i++) {
-            int qNumber = Integer.parseInt(bufferedReader.readLine());
-            int count = -1;
-            for (int j = 0; j < N; j++) {
-                count = count + nArray[j];
-                if (count >= qNumber) {
-                    stringBuilder.append(j + 1).append("\n");
+            while (true) {
+                count++;
+                if (!String.valueOf(count).contains(L)) {
                     break;
                 }
             }
         }
-        System.out.print(stringBuilder);
+        System.out.println(count);
     }
 }
