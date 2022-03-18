@@ -6,16 +6,16 @@ import java.util.StringTokenizer;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        int N = Integer.parseInt(bufferedReader.readLine());
         StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-        int N = Integer.parseInt(stringTokenizer.nextToken());
-        String L = stringTokenizer.nextToken();
+        boolean[] position = new boolean[101];
         int count = 0;
         for (int i = 0; i < N; i++) {
-            while (true) {
+            int num = Integer.parseInt(stringTokenizer.nextToken());
+            if (!position[num]) {
+                position[num] = true;
+            } else {
                 count++;
-                if (!String.valueOf(count).contains(L)) {
-                    break;
-                }
             }
         }
         System.out.println(count);
