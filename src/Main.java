@@ -1,22 +1,21 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String num = br.readLine();
-        StringBuilder sb = new StringBuilder();
-        while (!num.equals("0")) {
-            while (num.length() > 1) {
-                int sum = 0;
-                for (int i = 0; i < num.length(); i++) {
-                    sum += (num.charAt(i) - '0');
-                }
-                num = String.valueOf(sum);
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        int N = Integer.parseInt(bufferedReader.readLine());
+        int count = 0;
+        int num = 0;
+        while (N > 0) {
+            num++;
+            if (N < num) {
+                num = 1;
             }
-            sb.append(num).append("\n");
-            num = br.readLine();
+            N -= num;
+            count++;
         }
-        System.out.print(sb);
+        System.out.println(count);
     }
 }
-
