@@ -7,10 +7,18 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-        double d = Double.parseDouble(stringTokenizer.nextToken());
-        double h = Double.parseDouble(stringTokenizer.nextToken());
-        double w = Double.parseDouble(stringTokenizer.nextToken());
-        double num = Math.sqrt(d * d / (h * h + w * w));
-        System.out.println((int) (h * num) + " " + (int) (w * num));
+        int N = Integer.parseInt(stringTokenizer.nextToken());
+        int M = Integer.parseInt(stringTokenizer.nextToken());
+        stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+        int nSum = 0;
+        for (int i = 0; i < N; i++) {
+            nSum += Integer.parseInt(stringTokenizer.nextToken());
+        }
+        stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+        int mSum = 0;
+        for (int i = 0; i < M; i++) {
+            mSum += Integer.parseInt(stringTokenizer.nextToken());
+        }
+        System.out.println(Math.max(nSum - mSum, 0));
     }
 }
