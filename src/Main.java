@@ -5,20 +5,23 @@ import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+        StringBuilder stringBuilder = new StringBuilder();
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-        int N = Integer.parseInt(stringTokenizer.nextToken());
-        int M = Integer.parseInt(stringTokenizer.nextToken());
-        stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-        int nSum = 0;
-        for (int i = 0; i < N; i++) {
-            nSum += Integer.parseInt(stringTokenizer.nextToken());
+        String name = stringTokenizer.nextToken();
+        int age = Integer.parseInt(stringTokenizer.nextToken());
+        int weight = Integer.parseInt(stringTokenizer.nextToken());
+        while (!name.equals("#") || age != 0 || weight != 0) {
+            if (age > 17 || weight >= 80) {
+                stringBuilder.append(name).append(" Senior").append("\n");
+            } else {
+                stringBuilder.append(name).append(" Junior").append("\n");
+            }
+            stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+            name = stringTokenizer.nextToken();
+            age = Integer.parseInt(stringTokenizer.nextToken());
+            weight = Integer.parseInt(stringTokenizer.nextToken());
         }
-        stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-        int mSum = 0;
-        for (int i = 0; i < M; i++) {
-            mSum += Integer.parseInt(stringTokenizer.nextToken());
-        }
-        System.out.println(Math.max(nSum - mSum, 0));
+        System.out.print(stringBuilder);
     }
 }
