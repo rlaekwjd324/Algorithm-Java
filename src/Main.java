@@ -5,23 +5,15 @@ import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        StringBuilder stringBuilder = new StringBuilder();
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-        String name = stringTokenizer.nextToken();
-        int age = Integer.parseInt(stringTokenizer.nextToken());
-        int weight = Integer.parseInt(stringTokenizer.nextToken());
-        while (!name.equals("#") || age != 0 || weight != 0) {
-            if (age > 17 || weight >= 80) {
-                stringBuilder.append(name).append(" Senior").append("\n");
-            } else {
-                stringBuilder.append(name).append(" Junior").append("\n");
-            }
-            stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-            name = stringTokenizer.nextToken();
-            age = Integer.parseInt(stringTokenizer.nextToken());
-            weight = Integer.parseInt(stringTokenizer.nextToken());
+        int T = Integer.parseInt(bufferedReader.readLine());
+        for (int i = 0; i < T; i++) {
+            StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+            int num = Integer.parseInt(stringTokenizer.nextToken());
+            String name = stringTokenizer.nextToken();
+            String answer = "";
+            answer = name.substring(0, num - 1) + name.substring(num);
+            System.out.println(answer);
         }
-        System.out.print(stringBuilder);
     }
 }
