@@ -5,23 +5,11 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        int K = Integer.parseInt(bufferedReader.readLine());
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < K; i++) {
-            int h = Integer.parseInt(bufferedReader.readLine());
-            String actions = bufferedReader.readLine();
-            for (int j = 0; j < actions.length(); j++) {
-                if (h == 0) {
-                    break;
-                }
-                if (actions.charAt(j) == 'c') {
-                    h++;
-                } else {
-                    h--;
-                }
-            }
-            stringBuilder.append("Data Set ").append(i + 1).append(":").append("\n").append(h).append("\n\n");
+        int N = Integer.parseInt(bufferedReader.readLine());
+        if (N % 2 == 0) {
+            System.out.print(((N + 2) / 2) * ((N + 2) / 2));
+            return;
         }
-        System.out.print(stringBuilder);
+        System.out.print(((N + 2) / 2) * ((N + 2) / 2 + 1));
     }
 }
