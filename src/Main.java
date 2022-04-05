@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         int sum = 0;
-        HashMap<Integer, Integer> hashMap = new HashMap();
+        HashMap<Integer, Integer> hashMap = new HashMap<>();
         int max = 1;
         for (int i = 0; i < 10; i++) {
             int num = Integer.parseInt(bufferedReader.readLine());
