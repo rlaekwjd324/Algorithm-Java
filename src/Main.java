@@ -1,32 +1,34 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashMap;
+import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        int sum = 0;
-        HashMap<Integer, Integer> hashMap = new HashMap<>();
-        int max = 1;
-        for (int i = 0; i < 10; i++) {
-            int num = Integer.parseInt(bufferedReader.readLine());
-            sum += num;
-            if (hashMap.containsKey(num)) {
-                hashMap.replace(num, hashMap.get(num) + 1);
-                max = Math.max(max, hashMap.get(num));
-            } else {
-                hashMap.put(num, 1);
+        int T = Integer.parseInt(bufferedReader.readLine());
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < T; i++) {
+            StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+            double num = Double.parseDouble(stringTokenizer.nextToken());
+
+            while (stringTokenizer.hasMoreTokens()) {
+                String a = stringTokenizer.nextToken();
+                switch (a) {
+                    case "@":
+                        num = num * 3;
+                        break;
+                    case "%":
+                        num = num + 5;
+                        break;
+                    case "#":
+                        num = num - 7;
+                        break;
+                }
             }
+
+            stringBuilder.append(String.format("%.2f", num)).append("\n");
         }
-        int answer = 0;
-        for (int key : hashMap.keySet()) {
-            int value = hashMap.get(key);
-            if (value == max) {
-                answer = key;
-            }
-        }
-        System.out.println(sum / 10);
-        System.out.println(answer);
+        System.out.print(stringBuilder);
     }
 }
