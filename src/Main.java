@@ -1,23 +1,22 @@
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
-
-	public static void main(String[] args) throws IOException{
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer stk = new StringTokenizer(br.readLine());
-		
-		int N = Integer.parseInt(stk.nextToken());
-        int M = Integer.parseInt(stk.nextToken());
-        
-        if(M == 1 || M == 2) {
-            System.out.print("NEWBIE!");
-            return;
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        int sum = 0;
+        int min = 100;
+        for (int i = 0; i < 4; i++) {
+            int score = Integer.parseInt(bufferedReader.readLine());
+            min = Math.min(min, score);
+            sum += score;
         }
-        if(N >= M) {
-            System.out.print("OLDBIE!");
-            return;
-        }
-        System.out.print("TLE!");
+        sum -= min;
+        int historyScore = Integer.parseInt(bufferedReader.readLine());
+        int geographyScore = Integer.parseInt(bufferedReader.readLine());
+        int max = Math.max(historyScore, geographyScore);
+        sum += max;
+        System.out.print(sum);
     }
 }
