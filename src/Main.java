@@ -1,22 +1,27 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        int sum = 0;
-        int min = 100;
-        for (int i = 0; i < 4; i++) {
-            int score = Integer.parseInt(bufferedReader.readLine());
-            min = Math.min(min, score);
-            sum += score;
+        StringBuilder stringBuilder = new StringBuilder();
+        int testcaseCount = Integer.parseInt(bufferedReader.readLine());
+        for (int i = 0; i < testcaseCount; i++) {
+            StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+            char[] firstArray = stringTokenizer.nextToken().toCharArray();
+            char[] secondArray = stringTokenizer.nextToken().toCharArray();
+            stringBuilder.append("Distances:");
+            for (int j = 0; j < firstArray.length; j++) {
+                if (firstArray[j] > secondArray[j]) {
+                    stringBuilder.append(" ").append((int) secondArray[j] + 26 - (int) firstArray[j]);
+                } else {
+                    stringBuilder.append(" ").append((int) secondArray[j] - (int) firstArray[j]);
+                }
+            }
+            stringBuilder.append("\n");
         }
-        sum -= min;
-        int historyScore = Integer.parseInt(bufferedReader.readLine());
-        int geographyScore = Integer.parseInt(bufferedReader.readLine());
-        int max = Math.max(historyScore, geographyScore);
-        sum += max;
-        System.out.print(sum);
+        System.out.print(stringBuilder);
     }
 }
