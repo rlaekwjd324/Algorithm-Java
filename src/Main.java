@@ -1,24 +1,32 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        int T = Integer.parseInt(bufferedReader.readLine());
         StringBuilder stringBuilder = new StringBuilder();
-        int testcaseCount = Integer.parseInt(bufferedReader.readLine());
-        for (int i = 0; i < testcaseCount; i++) {
+        for (int i = 0; i < T; i++) {
             StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-            char[] firstArray = stringTokenizer.nextToken().toCharArray();
-            char[] secondArray = stringTokenizer.nextToken().toCharArray();
-            stringBuilder.append("Distances:");
-            for (int j = 0; j < firstArray.length; j++) {
-                if (firstArray[j] > secondArray[j]) {
-                    stringBuilder.append(" ").append((int) secondArray[j] + 26 - (int) firstArray[j]);
-                } else {
-                    stringBuilder.append(" ").append((int) secondArray[j] - (int) firstArray[j]);
-                }
+            int sum = 0;
+            int min = 10;
+            int max = 0;
+            int[] array = new int[5];
+            for (int j = 0; j < 5; j++) {
+                int num = Integer.parseInt(stringTokenizer.nextToken());
+                min = Math.min(min, num);
+                max = Math.max(max, num);
+                array[j] = num;
+                sum += num;
+            }
+            Arrays.sort(array);
+            if (Math.abs(array[1] - array[3]) >= 4) {
+                stringBuilder.append("KIN");
+            } else {
+                stringBuilder.append(sum - min - max);
             }
             stringBuilder.append("\n");
         }
