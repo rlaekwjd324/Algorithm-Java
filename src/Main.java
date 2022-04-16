@@ -6,19 +6,25 @@ import java.util.StringTokenizer;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        int N = Integer.parseInt(bufferedReader.readLine());
-        int aWinCount = 0;
-        int bWinCount = 0;
+        StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+        int N = Integer.parseInt(stringTokenizer.nextToken());
+        int M = Integer.parseInt(stringTokenizer.nextToken());
+        int[][] array = new int[N][M];
         for (int i = 0; i < N; i++) {
-            StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-            int a = Integer.parseInt(stringTokenizer.nextToken());
-            int b = Integer.parseInt(stringTokenizer.nextToken());
-            if (a > b) {
-                aWinCount++;
-            } else if (a < b) {
-                bWinCount++;
+            String str = bufferedReader.readLine();
+            for (int j = 0; j < M; j++) {
+                if (str.charAt(j) == '1') {
+                    array[i][M - j - 1] = 1;
+                }
             }
         }
-        System.out.print(aWinCount + " " + bWinCount);
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                stringBuilder.append(array[i][j]);
+            }
+            stringBuilder.append("\n");
+        }
+        System.out.print(stringBuilder);
     }
 }
