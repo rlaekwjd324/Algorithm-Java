@@ -1,23 +1,19 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        String str = bufferedReader.readLine();
-        int joiCount = 0;
-        int ioiCount = 0;
-        for (int i = 0; i < str.length() - 2; i++) {
-            String word = str.substring(i, i + 3);
-            if (word.equals("JOI")) {
-                joiCount++;
-            }
-            if (word.equals("IOI")) {
-                ioiCount++;
-            }
+        int N = Integer.parseInt(bufferedReader.readLine());
+        StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+        int[] array = new int[N];
+        for (int i = 0; i < N; i++) {
+            array[i] = Integer.parseInt(stringTokenizer.nextToken());
         }
-        System.out.println(joiCount);
-        System.out.println(ioiCount);
+        Arrays.sort(array);
+        System.out.print(array[N - 1] - array[0]);
     }
 }
