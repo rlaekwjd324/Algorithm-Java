@@ -9,17 +9,19 @@ public class Main {
         StringBuilder stringBuilder = new StringBuilder();
         int T = Integer.parseInt(bufferedReader.readLine());
         for (int i = 0; i < T; i++) {
-            StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-            int sum = 0;
-            int min = 100;
-            for (int j = 0; j < 7; j++) {
-                int num = Integer.parseInt(stringTokenizer.nextToken());
-                if (num % 2 == 0) {
-                    sum += num;
-                    min = Math.min(min, num);
+            int N = Integer.parseInt(bufferedReader.readLine());
+            int max = 0;
+            String bestUnv = "";
+            for (int j = 0; j < N; j++) {
+                StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+                String university = stringTokenizer.nextToken();
+                int bottle = Integer.parseInt(stringTokenizer.nextToken());
+                if (max < bottle) {
+                    max = bottle;
+                    bestUnv = university;
                 }
             }
-            stringBuilder.append(sum).append(" ").append(min).append("\n");
+            stringBuilder.append(bestUnv).append("\n");
         }
         System.out.print(stringBuilder);
     }
