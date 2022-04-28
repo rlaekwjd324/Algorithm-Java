@@ -6,29 +6,11 @@ import java.util.StringTokenizer;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-        int N = Integer.parseInt(stringTokenizer.nextToken());
-        int M = Integer.parseInt(stringTokenizer.nextToken());
-        int[][] aArray = new int[N][M];
-        int[][] bArray = new int[N][M];
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < N; i++) {
-            stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-            for (int j = 0; j < M; j++) {
-                aArray[i][j] = Integer.parseInt(stringTokenizer.nextToken());
-            }
-        }
-        for (int i = 0; i < N; i++) {
-            stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-            for (int j = 0; j < M; j++) {
-                bArray[i][j] = Integer.parseInt(stringTokenizer.nextToken());
-            }
-        }
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < M; j++) {
-                stringBuilder.append(aArray[i][j] + bArray[i][j]).append(" ");
-            }
-            stringBuilder.append("\n");
+        int T = Integer.parseInt(bufferedReader.readLine());
+        for (int i = 1; i <= T; i++) {
+            StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+            stringBuilder.append("Case ").append(i).append(": ").append(Integer.parseInt(stringTokenizer.nextToken()) + Integer.parseInt(stringTokenizer.nextToken())).append("\n");
         }
         System.out.print(stringBuilder);
     }
