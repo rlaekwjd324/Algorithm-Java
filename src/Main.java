@@ -5,11 +5,13 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        String letter = bufferedReader.readLine();
-        String remove = "CAMBRIDGE";
-        for (int i = 0; i < remove.length(); i++) {
-            letter = letter.replaceAll(String.valueOf(remove.charAt(i)), "");
+        String str = bufferedReader.readLine();
+        int count = 0;
+        for (int i = 0; i < str.length(); i++) {
+            if ("aeiou".contains(String.valueOf(str.charAt(i)))) {
+                count++;
+            }
         }
-        System.out.println(letter);
+        System.out.println(count);
     }
 }
