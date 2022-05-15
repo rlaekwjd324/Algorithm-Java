@@ -5,23 +5,18 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(bufferedReader.readLine());
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < n; i++) {
-            int num = Integer.parseInt(bufferedReader.readLine());
-            stringBuilder.append("Pairs for ").append(num).append(":");
-            for (int j = 1; j <= num / 2; j++) {
-                for (int k = j + 1; k < num; k++) {
-                    if (j + k == num) {
-                        stringBuilder.append(" ").append(j).append(" ").append(k).append(",");
-                    }
-                }
-            }
-            if (stringBuilder.charAt(stringBuilder.length() - 1) != ':') {
-                stringBuilder.deleteCharAt(stringBuilder.length() - 1);
-            }
-            stringBuilder.append("\n");
+        int n = Integer.parseInt(bufferedReader.readLine())*3;
+        n += Integer.parseInt(bufferedReader.readLine())*2;
+        n += Integer.parseInt(bufferedReader.readLine())*1;
+        int m = Integer.parseInt(bufferedReader.readLine())*3;
+        m += Integer.parseInt(bufferedReader.readLine())*2;
+        m += Integer.parseInt(bufferedReader.readLine())*1;
+        if(n>m ){
+            System.out.print("A");
+        }else if(n<m) {
+            System.out.print("B");
+        }else {
+            System.out.print("T");
         }
-        System.out.print(stringBuilder);
     }
 }
