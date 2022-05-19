@@ -5,17 +5,22 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        int N = Integer.parseInt(bufferedReader.readLine());
-        int count = 0;
-        for (int i = 1; i <= N; i++) {
-            int sum = 0;
-            for (int j = 0; j < String.valueOf(i).length(); j++) {
-                sum += (String.valueOf(i).charAt(j) - '0');
+        int t = Integer.parseInt(bufferedReader.readLine());
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < t; i++) {
+            int d = Integer.parseInt(bufferedReader.readLine());
+            boolean isExist = false;
+            for (int j = d / 2; j > 0; j--) {
+                if (j * (j + 1) <= d) {
+                    stringBuilder.append(j).append("\n");
+                    isExist = true;
+                    break;
+                }
             }
-            if (i % sum == 0) {
-                count++;
+            if (!isExist) {
+                stringBuilder.append("0").append("\n");
             }
         }
-        System.out.print(count);
+        System.out.print(stringBuilder);
     }
 }
