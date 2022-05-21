@@ -5,11 +5,11 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        String str = bufferedReader.readLine();
-        if (str.startsWith("555")) {
-            System.out.print("YES");
-            return;
+        int n = Integer.parseInt(bufferedReader.readLine());
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            stringBuilder.append("SciComLove").append("\n");
         }
-        System.out.print("NO");
+        System.out.print(stringBuilder);
     }
 }
