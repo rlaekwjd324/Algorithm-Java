@@ -1,15 +1,18 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(bufferedReader.readLine());
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < n; i++) {
-            stringBuilder.append("SciComLove").append("\n");
+        String strA = bufferedReader.readLine();
+        String strB = bufferedReader.readLine();
+        int sum = 0;
+        for (int i = 0; i < 3; i++) {
+            int minus = Integer.parseInt(strB.split(" ")[i])-Integer.parseInt(strA.split(" ")[i]);
+            if(minus > 0) {
+                sum += minus;
+            }
         }
-        System.out.print(stringBuilder);
+        System.out.print(sum);
     }
 }
