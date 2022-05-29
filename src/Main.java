@@ -8,14 +8,21 @@ public class Main {
         String str = bufferedReader.readLine();
         StringBuilder stringBuilder = new StringBuilder();
         while (!str.equals("#")) {
+            boolean[] array = new boolean[26];
             int count = 0;
-            char c = str.charAt(0);
-            for (int i = 1; i < str.length(); i++) {
-                if (str.charAt(i) == c || str.charAt(i) == (c - 32)) {
+            for (int i = 0; i < str.length(); i++) {
+                if (str.charAt(i) >= 65 && str.charAt(i) <= 90) {
+                    array[str.charAt(i) - 65] = true;
+                } else if (str.charAt(i) >= 97 && str.charAt(i) <= 122) {
+                    array[str.charAt(i) - 97] = true;
+                }
+            }
+            for (int i = 0; i < array.length; i++) {
+                if (array[i]) {
                     count++;
                 }
             }
-            stringBuilder.append(c).append(" ").append(count).append("\n");
+            stringBuilder.append(count).append("\n");
             str = bufferedReader.readLine();
         }
         System.out.print(stringBuilder);
