@@ -17,8 +17,8 @@ public class Main {
                     array[str.charAt(i) - 97] = true;
                 }
             }
-            for (int i = 0; i < array.length; i++) {
-                if (array[i]) {
+            for (boolean b : array) {
+                if (b) {
                     count++;
                 }
             }
