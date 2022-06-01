@@ -1,29 +1,22 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder stringBuilder = new StringBuilder();
         int n = Integer.parseInt(bufferedReader.readLine());
-        int count = 1;
-        while (n != 0) {
-            int n1 = n * 3;
-            int n2;
-            String str = "";
-            if (n1 % 2 == 0) {
-                n2 = n1 / 2;
-                str = "even";
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+            int x = Integer.parseInt(stringTokenizer.nextToken());
+            int y = Integer.parseInt(stringTokenizer.nextToken());
+            if (x < y) {
+                stringBuilder.append("NO BRAINS").append("\n");
             } else {
-                n2 = (n1 + 1) / 2;
-                str = "odd";
+                stringBuilder.append("MMM BRAINS").append("\n");
             }
-            int n3 = 3 * n2;
-            int n4 = n3 / 9;
-            stringBuilder.append(count).append(". ").append(str).append(" ").append(n4).append("\n");
-            count++;
-            n = Integer.parseInt(bufferedReader.readLine());
         }
         System.out.print(stringBuilder);
     }
