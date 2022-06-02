@@ -1,28 +1,22 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-        int n = Integer.parseInt(stringTokenizer.nextToken());
-        int m = Integer.parseInt(stringTokenizer.nextToken());
-        int[] array = new int[m];
-        int sum = 0;
-        stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-        for (int i = 0; i < m; i++) {
-            array[i] = Integer.parseInt(stringTokenizer.nextToken());
+        int a = Integer.parseInt(bufferedReader.readLine());
+        int e = Integer.parseInt(bufferedReader.readLine());
+        StringBuilder stringBuilder = new StringBuilder();
+        if (a >= 3 && e <= 4) {
+            stringBuilder.append("TroyMartian").append("\n");
         }
-        for (int i = 1; i <= n; i++) {
-            for (int j = 0; j < m; j++) {
-                if (i % array[j] == 0) {
-                    sum += i;
-                    break;
-                }
-            }
+        if (a <= 6 && e >= 2) {
+            stringBuilder.append("VladSaturnian").append("\n");
         }
-        System.out.print(sum);
+        if (a <= 2 && e <= 3) {
+            stringBuilder.append("GraemeMercurian").append("\n");
+        }
+        System.out.print(stringBuilder);
     }
 }
