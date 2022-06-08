@@ -5,31 +5,20 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        int N = Integer.parseInt(bufferedReader.readLine());
-        StringBuilder stringBuilder = new StringBuilder();
-        String[] array = new String[N];
-        for (int i = 0; i < N; i++) {
-            array[i] = bufferedReader.readLine();
+        String front = bufferedReader.readLine();
+        String back = bufferedReader.readLine();
+        String str = "";
+        for (int i = 0; i < front.length(); i++) {
+            str += front.charAt(i);
+            str += back.charAt(i);
         }
-        int K = Integer.parseInt(bufferedReader.readLine());
-        switch (K) {
-            case 1:
-                for (int i = 0; i < N; i++) {
-                    stringBuilder.append(array[i]).append("\n");
-                }
-                break;
-            case 2:
-                for (int i = 0; i < N; i++) {
-                    StringBuilder sb = new StringBuilder(array[i]);
-                    stringBuilder.append(sb.reverse()).append("\n");
-                }
-                break;
-            case 3:
-                for (int i = 0; i < N; i++) {
-                    stringBuilder.append(array[N - i - 1]).append("\n");
-                }
-                break;
+        while (str.length() > 2) {
+            String temp = "";
+            for (int i = 0; i < str.length() - 1; i++) {
+                temp = temp + ((str.charAt(i) - '0') + (str.charAt(i + 1) - '0')) % 10;
+            }
+            str = temp;
         }
-        System.out.print(stringBuilder);
+        System.out.print(str);
     }
 }
