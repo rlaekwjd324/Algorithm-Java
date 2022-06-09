@@ -1,24 +1,27 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        String front = bufferedReader.readLine();
-        String back = bufferedReader.readLine();
-        String str = "";
-        for (int i = 0; i < front.length(); i++) {
-            str += front.charAt(i);
-            str += back.charAt(i);
-        }
-        while (str.length() > 2) {
-            String temp = "";
-            for (int i = 0; i < str.length() - 1; i++) {
-                temp = temp + ((str.charAt(i) - '0') + (str.charAt(i + 1) - '0')) % 10;
+        StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+        int n = Integer.parseInt(stringTokenizer.nextToken());
+        StringBuilder stringBuilder = new StringBuilder();
+        while (n != 0) {
+            int preNumber = 0;
+            for (int i = 0; i < n; i++) {
+                int num = Integer.parseInt(stringTokenizer.nextToken());
+                if (preNumber != num) {
+                    preNumber = num;
+                    stringBuilder.append(preNumber).append(" ");
+                }
             }
-            str = temp;
+            stringBuilder.append("$").append("\n");
+            stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+            n = Integer.parseInt(stringTokenizer.nextToken());
         }
-        System.out.print(str);
+        System.out.print(stringBuilder);
     }
 }
