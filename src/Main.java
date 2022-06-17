@@ -5,14 +5,20 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        String H = bufferedReader.readLine();
-        String N = bufferedReader.readLine();
-        int index = H.indexOf(N);
-        int count = 0;
-        while (index != -1) {
-            count++;
-            index = H.indexOf(N, index + 1);
+        int t = Integer.parseInt(bufferedReader.readLine());
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < t; i++) {
+            int n = Integer.parseInt(bufferedReader.readLine());
+            int sum = 0;
+            for (int j = 1; j <= n; j++) {
+                int tk = 0;
+                for (int k = 1; k <= j + 1; k++) {
+                    tk += k;
+                }
+                sum += (tk * j);
+            }
+            stringBuilder.append(sum).append("\n");
         }
-        System.out.print(count);
+        System.out.print(stringBuilder);
     }
 }
