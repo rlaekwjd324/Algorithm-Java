@@ -1,29 +1,28 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        int N = Integer.parseInt(bufferedReader.readLine());
-        StringBuilder stringBuilder = new StringBuilder();
-        int[] array = new int[10];
-        for (int i = 0; i < array.length; i++) {
-            array[i] = (i % 5) + 1;
-        }
-        for (int i = 0; i < N; i++) {
-            int count = 0;
-            StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-            for (int j = 0; j < array.length; j++) {
-                if (array[j] == Integer.parseInt(stringTokenizer.nextToken())) {
-                    count++;
-                }
-            }
-            if (count == 10) {
-                stringBuilder.append(i + 1).append("\n");
+        int count = 0;
+        for (int i = 0; i < 6; i++) {
+            if (bufferedReader.readLine().equals("W")) {
+                count++;
             }
         }
-        System.out.print(stringBuilder);
+        if (count == 0) {
+            System.out.print("-1");
+            return;
+        }
+        if (count <= 2) {
+            System.out.print("3");
+            return;
+        }
+        if (count <= 4) {
+            System.out.print("2");
+            return;
+        }
+        System.out.print("1");
     }
 }
