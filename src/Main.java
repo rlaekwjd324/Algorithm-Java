@@ -1,28 +1,43 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        int count = 0;
-        for (int i = 0; i < 6; i++) {
-            if (bufferedReader.readLine().equals("W")) {
-                count++;
-            }
+        StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+        String[] array = new String[50];
+        for (int i = 0; i < 50; i++) {
+            array[i] = stringTokenizer.nextToken();
         }
-        if (count == 0) {
-            System.out.print("-1");
+        String str = bufferedReader.readLine();
+        int index = Arrays.asList(array).indexOf(str);
+        if (index < 5) {
+            System.out.print("A+");
             return;
         }
-        if (count <= 2) {
-            System.out.print("3");
+        if (index < 15) {
+            System.out.print("A0");
             return;
         }
-        if (count <= 4) {
-            System.out.print("2");
+        if (index < 30) {
+            System.out.print("B+");
             return;
         }
-        System.out.print("1");
+        if (index < 35) {
+            System.out.print("B0");
+            return;
+        }
+        if (index < 45) {
+            System.out.print("C+");
+            return;
+        }
+        if (index < 48) {
+            System.out.print("C0");
+            return;
+        }
+        System.out.print("F");
     }
 }
