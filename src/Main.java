@@ -1,24 +1,12 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-        int N = Integer.parseInt(stringTokenizer.nextToken());
-        int M = Integer.parseInt(stringTokenizer.nextToken());
-        int[] array = new int[N];
-        for (int i = 0; i < M; i++) {
-            stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-            int A = Integer.parseInt(stringTokenizer.nextToken());
-            int B = Integer.parseInt(stringTokenizer.nextToken());
-            array[A - 1]++;
-            array[B - 1]++;
-        }
-        for (int i = 0; i < N; i++) {
-            System.out.println(array[i]);
-        }
+        int first = Integer.parseInt(bufferedReader.readLine());
+        int second = Integer.parseInt(bufferedReader.readLine());
+        System.out.print(second + second - first);
     }
 }
