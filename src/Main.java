@@ -5,15 +5,22 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        int N = Integer.parseInt(bufferedReader.readLine());
+        int t = Integer.parseInt(bufferedReader.readLine());
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < N; i++) {
-            String[] array = bufferedReader.readLine().split(" ");
-            String str = array[0] + " " + array[1];
-            for (int j = 2; j < array.length; j++) {
-                stringBuilder.append(array[j]).append(" ");
+        for (int i = 0; i < t; i++) {
+            String str = bufferedReader.readLine();
+            int sum = 0;
+            for (int j = 0; j < 16; j++) {
+                int c = str.charAt(j) - '0';
+                if (j % 2 == 0) {
+                    c *= 2;
+                    if (c >= 10) {
+                        c = c / 10 + c % 10;
+                    }
+                }
+                sum += c;
             }
-            stringBuilder.append(str).append("\n");
+            stringBuilder.append(sum % 10 == 0 ? "T" : "F").append("\n");
         }
         System.out.print(stringBuilder);
     }
