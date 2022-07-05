@@ -1,27 +1,30 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        int t = Integer.parseInt(bufferedReader.readLine());
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < t; i++) {
-            String str = bufferedReader.readLine();
-            int sum = 0;
-            for (int j = 0; j < 16; j++) {
-                int c = str.charAt(j) - '0';
-                if (j % 2 == 0) {
-                    c *= 2;
-                    if (c >= 10) {
-                        c = c / 10 + c % 10;
-                    }
-                }
-                sum += c;
-            }
-            stringBuilder.append(sum % 10 == 0 ? "T" : "F").append("\n");
+        StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+        int n = Integer.parseInt(stringTokenizer.nextToken());
+        int m = Integer.parseInt(stringTokenizer.nextToken());
+        String[] array = new String[n];
+        for (int i = 0; i < n; i++) {
+            array[i] = bufferedReader.readLine();
         }
-        System.out.print(stringBuilder);
+        for (int i = 0; i < n; i++) {
+            String str = bufferedReader.readLine();
+            StringBuilder temp = new StringBuilder();
+            for (int j = 0; j < m; j++) {
+                String c = Character.toString(array[i].charAt(j));
+                temp.append(c).append(c);
+            }
+            if (!temp.toString().equals(str)) {
+                System.out.print("Not Eyfa");
+                return;
+            }
+        }
+        System.out.print("Eyfa");
     }
 }
