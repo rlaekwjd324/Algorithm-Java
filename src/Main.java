@@ -6,9 +6,8 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(bufferedReader.readLine());
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("long ".repeat(Math.max(0, n / 4)));
-        stringBuilder.append("int");
+        String stringBuilder = "long ".repeat(Math.max(0, n / 4)) +
+                "int";
         System.out.print(stringBuilder);
     }
 }
