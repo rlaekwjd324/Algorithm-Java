@@ -7,17 +7,15 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-        int L = Integer.parseInt(stringTokenizer.nextToken());
-        int R = Integer.parseInt(stringTokenizer.nextToken());
-        int A = Integer.parseInt(stringTokenizer.nextToken());
-        while (A > 0) {
-            if (L > R) {
-                R++;
-            } else {
-                L++;
+        int sum = 0;
+        for (int i = 2; i <= 10; i++) {
+            int score = Integer.parseInt(stringTokenizer.nextToken());
+            if (score > i / 2 * 100) {
+                System.out.print("hacker");
+                return;
             }
-            A--;
+            sum += score;
         }
-        System.out.print(Math.min(L, R) * 2);
+        System.out.print(sum >= 100 ? "draw" : "none");
     }
 }
