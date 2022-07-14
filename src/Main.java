@@ -5,12 +5,15 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        long n = Long.parseLong(bufferedReader.readLine());
-        long sum = 0;
-        while (n != -1) {
-            sum += n;
-            n = Integer.parseInt(bufferedReader.readLine());
+        int n = Integer.parseInt(bufferedReader.readLine());
+        int m = Integer.parseInt(bufferedReader.readLine());
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                stringBuilder.append("*");
+            }
+            stringBuilder.append("\n");
         }
-        System.out.print(sum);
+        System.out.print(stringBuilder);
     }
 }
