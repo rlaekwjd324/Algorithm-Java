@@ -6,15 +6,15 @@ import java.util.StringTokenizer;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+        int x = reverseNumber(stringTokenizer.nextToken());
+        int y = reverseNumber(stringTokenizer.nextToken());
+        System.out.print(reverseNumber(String.valueOf(x + y)));
+    }
+
+    public static int reverseNumber(String str) {
         StringBuilder stringBuilder = new StringBuilder();
-        String str = bufferedReader.readLine();
-        while (str != null && str.length() != 0 && str != "") {
-            StringTokenizer stringTokenizer = new StringTokenizer(str);
-            double h = Double.parseDouble(stringTokenizer.nextToken());
-            double p = Double.parseDouble(stringTokenizer.nextToken());
-            stringBuilder.append(String.format("%.2f", (h / p))).append("\n");
-            str = bufferedReader.readLine();
-        }
-        System.out.print(stringBuilder);
+        stringBuilder.append(str);
+        return Integer.parseInt(stringBuilder.reverse().toString());
     }
 }
