@@ -1,37 +1,52 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        String str = bufferedReader.readLine();
-        int answer = 0;
-        if (str.charAt(0) == '0') {
-//            16진수
-            if (str.charAt(1) == 'x') {
-                for (int i = str.length() - 1; i >= 2; i--) {
-                    char c = str.charAt(i);
-                    int num = 0;
-                    if (c >= 97) {
-                        num = c - 87;
-                    } else {
-                        num = c - '0';
+        int n = Integer.parseInt(bufferedReader.readLine());
+        ArrayList<Person> arrayList = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+            Person person = new Person(stringTokenizer.nextToken(), Integer.parseInt(stringTokenizer.nextToken()), Integer.parseInt(stringTokenizer.nextToken()), Integer.parseInt(stringTokenizer.nextToken()));
+            arrayList.add(person);
+        }
+        arrayList.sort((o1, o2) -> {
+            if (o1.year > o2.year) {
+                return 1;
+            } else if (o1.year == o2.year) {
+                if (o1.month > o2.month) {
+                    return 1;
+                } else if (o1.month == o2.month) {
+                    if (o1.day > o2.day) {
+                        return 1;
                     }
-                    answer += (num) * Math.pow(16, str.length() - i - 1);
+                } else {
+                    return -1;
                 }
+            } else {
+                return -1;
             }
-//            8진수
-            else {
-                for (int i = str.length() - 1; i >= 1; i--) {
-                    answer += (str.charAt(i) - '0') * Math.pow(8, str.length() - i - 1);
-                }
-            }
+            return 0;
+        });
+        System.out.println(arrayList.get(arrayList.size() - 1).name);
+        System.out.println(arrayList.get(0).name);
+    }
+
+    public static class Person {
+        String name;
+        int day;
+        int month;
+        int year;
+
+        public Person(String name, int day, int month, int year) {
+            this.name = name;
+            this.day = day;
+            this.month = month;
+            this.year = year;
         }
-//        10진수
-        else {
-            answer = Integer.parseInt(str);
-        }
-        System.out.print(answer);
     }
 }
