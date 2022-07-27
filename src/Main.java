@@ -6,34 +6,25 @@ import java.util.StringTokenizer;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+        int[] array = new int[3];
+        array[0] = Integer.parseInt(stringTokenizer.nextToken());
+        array[1] = Integer.parseInt(stringTokenizer.nextToken());
+        array[2] = Integer.parseInt(stringTokenizer.nextToken());
         int n = Integer.parseInt(bufferedReader.readLine());
-        StringBuilder stringBuilder = new StringBuilder();
+        int max = 0;
         for (int i = 0; i < n; i++) {
-            StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-            String name = stringTokenizer.nextToken();
-            int score = Integer.parseInt(stringTokenizer.nextToken());
-            stringBuilder.append(name).append(" ");
-            if (score >= 97) {
-                stringBuilder.append("A+");
-            } else if (score >= 90) {
-                stringBuilder.append("A");
-            } else if (score >= 87) {
-                stringBuilder.append("B+");
-            } else if (score >= 80) {
-                stringBuilder.append("B");
-            } else if (score >= 77) {
-                stringBuilder.append("C+");
-            } else if (score >= 70) {
-                stringBuilder.append("C");
-            } else if (score >= 67) {
-                stringBuilder.append("D+");
-            } else if (score >= 60) {
-                stringBuilder.append("D");
-            } else {
-                stringBuilder.append("F");
+            int sum = 0;
+            for (int j = 0; j < 3; j++) {
+                stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+                for (int w = 0; w < 3; w++) {
+                    sum += Integer.parseInt(stringTokenizer.nextToken()) * array[w];
+                }
             }
-            stringBuilder.append("\n");
+            if (max < sum) {
+                max = sum;
+            }
         }
-        System.out.print(stringBuilder);
+        System.out.print(max);
     }
 }
