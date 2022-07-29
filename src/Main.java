@@ -1,30 +1,22 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        String str = bufferedReader.readLine();
         StringBuilder stringBuilder = new StringBuilder();
-        int S = Integer.parseInt(bufferedReader.readLine());
-        String[] letters = {"A", "E", "I", "O", "U", "a", "e", "i", "o", "u"};
-        for (int i = 0; i < S; i++) {
-            StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-            int letterCount = 0;
-            int etcCount = 0;
-            while (stringTokenizer.hasMoreTokens()) {
-                char[] array = stringTokenizer.nextToken().toCharArray();
-                for (char c : array) {
-                    if (Arrays.asList(letters).contains(String.valueOf(c))) {
-                        letterCount++;
-                    } else {
-                        etcCount++;
-                    }
+        while (!str.equals("#")) {
+            int sum = 0;
+            for (int i = 1; i <= str.length(); i++) {
+                char c = str.charAt(i - 1);
+                if (c != ' ') {
+                    sum += ((int) str.charAt(i - 1) - 64) * i;
                 }
             }
-            stringBuilder.append(etcCount).append(" ").append(letterCount).append("\n");
+            stringBuilder.append(sum).append("\n");
+            str = bufferedReader.readLine();
         }
         System.out.print(stringBuilder);
     }
