@@ -7,16 +7,16 @@ public class Main {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         String str = bufferedReader.readLine();
         StringBuilder stringBuilder = new StringBuilder();
-        while (!str.equals("#")) {
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
             int sum = 0;
-            for (int i = 1; i <= str.length(); i++) {
-                char c = str.charAt(i - 1);
-                if (c != ' ') {
-                    sum += ((int) str.charAt(i - 1) - 64) * i;
-                }
+            for (int j = 0; j < String.valueOf((int) c).length(); j++) {
+                sum += (String.valueOf((int) c).charAt(j) - '0');
             }
-            stringBuilder.append(sum).append("\n");
-            str = bufferedReader.readLine();
+            for (int j = 0; j < sum; j++) {
+                stringBuilder.append(c);
+            }
+            stringBuilder.append("\n");
         }
         System.out.print(stringBuilder);
     }
