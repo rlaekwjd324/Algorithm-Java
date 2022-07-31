@@ -1,23 +1,21 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        String str = bufferedReader.readLine();
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < str.length(); i++) {
-            char c = str.charAt(i);
-            int sum = 0;
-            for (int j = 0; j < String.valueOf((int) c).length(); j++) {
-                sum += (String.valueOf((int) c).charAt(j) - '0');
-            }
-            for (int j = 0; j < sum; j++) {
-                stringBuilder.append(c);
-            }
-            stringBuilder.append("\n");
+        StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+        int widthComputer = Integer.parseInt(stringTokenizer.nextToken());
+        int heightComputer = Integer.parseInt(stringTokenizer.nextToken());
+        int widthSticker = Integer.parseInt(stringTokenizer.nextToken());
+        int heightSticker = Integer.parseInt(stringTokenizer.nextToken());
+        if (widthComputer >= widthSticker + 2 && heightComputer >= heightSticker + 2) {
+            System.out.println("1");
+        } else {
+            System.out.println("0");
         }
-        System.out.print(stringBuilder);
+
     }
 }
