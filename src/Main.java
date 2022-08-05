@@ -5,25 +5,20 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        int sLength = Integer.parseInt(bufferedReader.readLine());
-        String s = bufferedReader.readLine();
-        int count2 = 0;
-        int countE = 0;
-        for (int i = 0; i < sLength; i++) {
-            if (s.charAt(i) == '2') {
-                count2++;
+        int N = Integer.parseInt(bufferedReader.readLine());
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < N; i++) {
+            String str = bufferedReader.readLine().replaceAll(" ", "");
+            int sum = 0;
+            for (int j = 0; j < str.length(); j++) {
+                sum += ((int) str.charAt(j) - 64);
+            }
+            if (sum == 100) {
+                stringBuilder.append("PERFECT LIFE").append("\n");
             } else {
-                countE++;
+                stringBuilder.append(sum).append("\n");
             }
         }
-        if (count2 == countE) {
-            System.out.print("yee");
-            return;
-        }
-        if (count2 > countE) {
-            System.out.print("2");
-            return;
-        }
-        System.out.print("e");
+        System.out.print(stringBuilder);
     }
 }
