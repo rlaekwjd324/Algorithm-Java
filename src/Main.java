@@ -8,15 +8,11 @@ public class Main {
         int N = Integer.parseInt(bufferedReader.readLine());
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < N; i++) {
-            String str = bufferedReader.readLine().replaceAll(" ", "");
-            int sum = 0;
-            for (int j = 0; j < str.length(); j++) {
-                sum += ((int) str.charAt(j) - 64);
-            }
-            if (sum == 100) {
-                stringBuilder.append("PERFECT LIFE").append("\n");
+            String str = bufferedReader.readLine();
+            if (str.length() >= 6 && str.length() <= 9) {
+                stringBuilder.append("yes").append("\n");
             } else {
-                stringBuilder.append(sum).append("\n");
+                stringBuilder.append("no").append("\n");
             }
         }
         System.out.print(stringBuilder);
