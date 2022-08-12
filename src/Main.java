@@ -5,14 +5,14 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        String str = bufferedReader.readLine();
-        StringBuilder stringBuilder = new StringBuilder();
-        while (!str.equals("***")) {
-            StringBuilder tempStringBuilder = new StringBuilder();
-            tempStringBuilder.append(str);
-            stringBuilder.append(tempStringBuilder.reverse()).append("\n");
-            str = bufferedReader.readLine();
+        int N = Integer.parseInt(bufferedReader.readLine());
+        for (int i = 0; i < N; i++) {
+            String str = bufferedReader.readLine();
+            if (str.equals("anj")) {
+                System.out.print("뭐야;");
+                return;
+            }
         }
-        System.out.print(stringBuilder);
+        System.out.print("뭐야?");
     }
 }
