@@ -1,19 +1,24 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        int[] array = new int[5];
-        int sum = 0;
-        for (int i = 0; i < 5; i++) {
-            array[i] = Integer.parseInt(bufferedReader.readLine());
-            sum += array[i];
+        int N = Integer.parseInt(bufferedReader.readLine());
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < N * 5; i++) {
+            if (i < N || i >= N * 5 - N) {
+                for (int j = 0; j < N * 5; j++) {
+                    stringBuilder.append("@");
+                }
+            } else {
+                for (int j = 0; j < N; j++) {
+                    stringBuilder.append("@");
+                }
+            }
+            stringBuilder.append("\n");
         }
-        Arrays.sort(array);
-        System.out.println(sum / 5);
-        System.out.println(array[2]);
+        System.out.print(stringBuilder);
     }
 }
