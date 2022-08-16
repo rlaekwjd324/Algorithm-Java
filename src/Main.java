@@ -8,14 +8,10 @@ public class Main {
         int N = Integer.parseInt(bufferedReader.readLine());
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < N * 5; i++) {
-            if (i < N || i >= N * 5 - N) {
-                for (int j = 0; j < N * 5; j++) {
-                    stringBuilder.append("@");
-                }
+            if (i >= N * 5 - N) {
+                stringBuilder.append("@".repeat(Math.max(0, N * 5)));
             } else {
-                for (int j = 0; j < N; j++) {
-                    stringBuilder.append("@");
-                }
+                stringBuilder.append("@".repeat(Math.max(0, N)));
             }
             stringBuilder.append("\n");
         }
