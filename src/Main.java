@@ -6,23 +6,15 @@ import java.util.StringTokenizer;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        int T = Integer.parseInt(bufferedReader.readLine());
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < T; i++) {
-            StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-            int N = Integer.parseInt(stringTokenizer.nextToken());
-            int M = Integer.parseInt(stringTokenizer.nextToken());
-            int count = 0;
-            for (int j = N; j <= M; j++) {
-                String num = String.valueOf(j);
-                for (int k = 0; k < num.length(); k++) {
-                    if (num.charAt(k) == '0') {
-                        count++;
-                    }
-                }
-            }
-            stringBuilder.append(count).append("\n");
+        StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+        String a = stringTokenizer.nextToken();
+        String b = stringTokenizer.nextToken();
+        a = "0".repeat(Math.max(a.length(), b.length()) - a.length()) + a;
+        b = "0".repeat(Math.max(a.length(), b.length()) - b.length()) + b;
+        StringBuilder answer = new StringBuilder();
+        for (int i = 0; i < a.length(); i++) {
+            answer.append((a.charAt(i) - '0') + (b.charAt(i) - '0'));
         }
-        System.out.print(stringBuilder);
+        System.out.print(answer);
     }
 }
